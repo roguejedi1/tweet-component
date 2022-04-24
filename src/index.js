@@ -60,17 +60,19 @@ const Time = ({time}) => {
 const ReplyButton = ({count}) => (
     <span>
         <i className="fa fa-reply reply-button"/>
-        {getRetweetCount(count)}
     </span>
 )
 
-const RetweetButton = () => (
-    <i className="fa fa-retweet retweet-button"/>
+const RetweetButton = ({count}) => (
+    <span className="retweet-button">
+    <i className="fa fa-retweet"/>
+    {getRetweetCount(count)}
+    </span>
 )
 
 const LikeButton = ({count}) => (
-    <span>
-        <i className="fa fa-heart like-button"/>
+    <span className="like-button">
+        <i className="fa fa-heart"/>
         {count > 0 &&
             <span className="like-count">
                 {count}
@@ -91,15 +93,17 @@ const testTweet = {
         name: 'Elon Musk'
     },
     likes: 2,
-    retweets: 0,
+    retweets: 10,
     timestamp: '2022-07-10 21:24:30'
 }
 
 function getRetweetCount(count){
     if(count > 0) {
+        return (
         <span className="retweet-count">
             {count}
         </span>
+        )
     } else {
         return null
     }
